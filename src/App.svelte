@@ -1,17 +1,27 @@
 <script>
-  let x = 1;
+  let n =1;
+  let stars;
 
-  $: area = x*x;
-  $: volume = x*x*x;
-
+  $: console.log ('nの値が${n}に変更されました')
+  $: {
+    const newStars = [];
+    for (let i = 0; i <n; i++) {
+      newStars.push(i % 2 === 0 ? '★' : '');
+    }
+    stars = newStars;
+  }
 </script>
 
 <div>
-  一辺の長さ：
-  <button on:click={()=> (x = x-1)} disabled = {x <= 1}> - </button>
-  {x}m 
-
-  <button on:click={()=> (x = x+1)}> + </button>
+  {#each stars as star}{star}{/each}
 </div>
-<div>面積：{area}m <sup>2</sup></div>
-<div>体積：{volume}m <sup>3</sup></div>
+
+<div>
+  <button on:click={()=> (n=n-1)} disabled={n<=1}>
+    ★を減らす
+    </button>
+  
+  <button on:click={()=> (n=n+1)}>
+    ★を増やす
+    </button>
+</div>
