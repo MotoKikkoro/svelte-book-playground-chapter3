@@ -1,19 +1,15 @@
 <script>
-  let n =1;
-  $: if (n>10) {
-    alert ('数量多すぎ。10個以内にしてください');
-    n=10;
-  }
-  </script>
+  let todos =[];
+  function handleClick(){
+    todos.push('新しいtodo');
+    todos = todos;
+}
+</script>
 
-  <div>
-    数量 : {n}
-  </div>
+<ul>
+  {#each todos as todo}
+  <li>{todo}</li>
+  {/each}
+</ul>
 
-  <div>
-    <button on:click={()=> (n=n-1)} disabled={n<=1} >減らす
-    </button>
-    <button on:click={()=> (n=n+1)} >増やす
-    </button>
-  
-  </div>
+<button on:click={handleClick}>追加</button>
