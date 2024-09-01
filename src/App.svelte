@@ -1,8 +1,7 @@
 <script>
   let todos =[];
   function handleClick(){
-    todos.push('新しいtodo');
-    todos = todos;
+    todos = [...todos, ('新しいtodo')];
 }
 </script>
 
