@@ -1,11 +1,17 @@
 <script>
-  let count = 0;
+  let x = 1;
 
-  function handleClick() {
-    count += 1;
-  }
-  </script>
+  $: area = x*x;
+  $: volume = x*x*x;
 
-  <button on:click={handleClick}>
-    {count}回クリックされました
-  </button>
+</script>
+
+<div>
+  一辺の長さ：
+  <button on:click={()=> (x = x-1)} disabled = {x <= 1}> - </button>
+  {x}m 
+
+  <button on:click={()=> (x = x+1)}> + </button>
+</div>
+<div>面積：{area}m <sup>2</sup></div>
+<div>体積：{volume}m <sup>3</sup></div>
