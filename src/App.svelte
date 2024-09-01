@@ -1,27 +1,19 @@
 <script>
   let n =1;
-  let stars;
-
-  $: console.log ('nの値が${n}に変更されました')
-  $: {
-    const newStars = [];
-    for (let i = 0; i <n; i++) {
-      newStars.push(i % 2 === 0 ? '★' : '');
-    }
-    stars = newStars;
+  $: if (n>10) {
+    alert ('数量多すぎ。10個以内にしてください');
+    n=10;
   }
-</script>
+  </script>
 
-<div>
-  {#each stars as star}{star}{/each}
-</div>
+  <div>
+    数量 : {n}
+  </div>
 
-<div>
-  <button on:click={()=> (n=n-1)} disabled={n<=1}>
-    ★を減らす
+  <div>
+    <button on:click={()=> (n=n-1)} disabled={n<=1} >減らす
+    </button>
+    <button on:click={()=> (n=n+1)} >増やす
     </button>
   
-  <button on:click={()=> (n=n+1)}>
-    ★を増やす
-    </button>
-</div>
+  </div>
